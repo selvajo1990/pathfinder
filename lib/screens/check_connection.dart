@@ -53,7 +53,9 @@ class _CheckConnectionState extends State<CheckConnection> {
           children: [
             Consumer<UserInformation>(
               builder: (context, userInfo, child) {
-                return Text(userInfo != null ? userInfo.uid : 'no user');
+                return Text(userInfo != null
+                    ? userInfo.uid
+                    : CircularProgressIndicator());
               },
             ),
             // Text(userInfo != null ? userInfo.uid : 'no user'),
@@ -67,13 +69,9 @@ class _CheckConnectionState extends State<CheckConnection> {
                 var country = await getCountry('canada');
                 print(country);
               },
-              child: Column(
-                children: [
-                  Text(
-                    'Get Country',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ],
+              child: Text(
+                'Get Country',
+                style: TextStyle(color: Colors.black),
               ),
             ),
             Divider(),
@@ -86,13 +84,9 @@ class _CheckConnectionState extends State<CheckConnection> {
                 await CheckUserAccess()
                     .signWithFirebase('selva.t@gmail.com', '123456');
               },
-              child: Column(
-                children: [
-                  Text(
-                    'Sign In',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ],
+              child: Text(
+                'Sign In',
+                style: TextStyle(color: Colors.black),
               ),
             ),
             Divider(),
@@ -105,15 +99,26 @@ class _CheckConnectionState extends State<CheckConnection> {
                 dynamic result = await CheckUserAccess().signOut();
                 print(result);
               },
-              child: Column(
-                children: [
-                  Text(
-                    'Sign Out',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ],
+              child: Text(
+                'Sign Out',
+                style: TextStyle(color: Colors.black),
               ),
             ),
+            Divider(),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.greenAccent[700]),
+              ),
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed('/second', arguments: 'Change Notifier');
+              },
+              child: Text(
+                'Change Notifier',
+                style: TextStyle(color: Colors.black),
+              ),
+            )
           ],
         ),
       ),

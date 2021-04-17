@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pathfinder/models/firebase_auth.dart';
-import 'package:pathfinder/screens/check_connection.dart';
+import 'package:pathfinder/models/route_generator.dart';
 import 'package:pathfinder/utils/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: CheckConnection(
-          title: 'Firebase Connection',
-        ),
+        initialRoute: '/',
+        onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );
   }
 }
+// routes - https://www.youtube.com/watch?v=nyvwx7o277U
