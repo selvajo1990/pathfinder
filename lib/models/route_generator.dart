@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pathfinder/screens/check_connection.dart';
+import 'package:pathfinder/screens/chart.dart';
+//import 'package:pathfinder/screens/check_connection.dart';
 import 'package:pathfinder/screens/error_page.dart';
 import 'package:pathfinder/screens/secondpage.dart';
 
@@ -10,9 +11,7 @@ class RouteGenerator {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => CheckConnection(
-            title: 'Firebase Connection',
-          ),
+          builder: (_) => Chart.withSampleData(),
         );
       case '/second':
         if (arguments is String) {
